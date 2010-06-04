@@ -80,11 +80,15 @@ module CouchPotato
     end
 
     def has_attribute?(attr_name)
-      self.send("#{attr_name}?")
+      self.respond_to?("#{attr_name}=")
     end
 
     def [](attr_name)
-      self.send("#{attr_name}")
+      if self.respond_to?("#{attr_name}=")
+        self.send("#{attr_name}")
+      else
+        nil
+      end
     end
     
     def []=(attr_name, value)
