@@ -78,6 +78,18 @@ module CouchPotato
         res
       end
     end
+
+    def has_attribute?(attr_name)
+      self.send.("#{attr_name}?")
+    end
+
+    def [](attr_name)
+      self.send.("#{attr_name}")
+    end
+    
+    def []=(attr_name, value)
+      self.send "#{attr_name}=", value
+    end
     
     # returns true if a  model hasn't been saved yet, false otherwise
     def new?
