@@ -95,6 +95,10 @@ module CouchPotato
       self.send "#{attr_name}=", value
     end
     
+    def to_key
+      new? ? nil : _id
+    end
+    
     # returns true if a  model hasn't been saved yet, false otherwise
     def new?
       _rev.nil?
@@ -107,7 +111,7 @@ module CouchPotato
     def to_param
       _id
     end
-    
+
     def ==(other) #:nodoc:
       other.class == self.class && self.to_json == other.to_json
     end
