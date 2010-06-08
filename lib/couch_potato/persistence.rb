@@ -99,6 +99,10 @@ module CouchPotato
       new? ? nil : _id
     end
     
+    def persisted?
+      !new?
+    end
+
     # returns true if a  model hasn't been saved yet, false otherwise
     def new?
       _rev.nil?
