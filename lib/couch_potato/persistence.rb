@@ -96,7 +96,7 @@ module CouchPotato
     end
     
     def to_key
-      new? ? nil : _id
+      new? ? nil : [ _id ]
     end
     
     def persisted?
